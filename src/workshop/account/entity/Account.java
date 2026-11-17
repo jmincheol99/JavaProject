@@ -1,10 +1,22 @@
 package workshop.account.entity;
 
+import workshop.account.exception.InsufficientBalanceException;
+
 public class Account {
 	private String custId;
 	private String acctId;
 	private int balance;
 	
+	//생성자 추가
+	public Account() {
+		
+	}
+	
+	public Account(String custId, String acctId, int balance) {
+		this.custId = custId;
+		this.acctId = acctId;
+		this.balance = balance;	
+	}
 	
 	//method 선언
 	public String getCustId() {
@@ -24,10 +36,22 @@ public class Account {
 	public int getBalance() {
 		return balance;
 	}
-	public void setBalance(int balance) {
-		this.balance = balance;
+	public void deposit(int amount) {
+		//this.balance = this.balance + amount
+		this.balance += amount;
 	}
-	
+	public void withdraw(int amount) throws InsufficientBalanceException {
+		if(amount > this.balance) {
+			//Exception을 강제로 발생시킴
+			throw new InsufficientBalanceException("잔액이 부족합니다. 현재 잔액은 =", this.balance);
+		}
+		this.balance -= amount;
+	}
+
+	@Override
+	public String toString() {
+		return "Account [custId=" + custId + ", acctId=" + acctId + ", balance=" + balance + "]";
+	}
 	
 	
 }
