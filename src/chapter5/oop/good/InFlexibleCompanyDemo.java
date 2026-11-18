@@ -6,8 +6,9 @@ public class InFlexibleCompanyDemo {
     	Employee mereClerk1 = new MereClerk("철수", 100);
     	Employee mereClerk2 = new MereClerk("영희", 100);
     	
-    	Employee manager = new Manager("홍길동", 200, "인사부");
-    	Manager manager2 = new Manager("둘리", 300, "개발부");
+    	Employee manager = new Manager("홍길동", 200, "인사부"); //(1) List list = new ArrayList();
+    	Manager manager2 = new Manager("둘리", 300, "개발부"); //(2) ArraryList list2 = new ArrayList();
+    	//(2)는 (1)과 비교해서 고유하게 갖고 있는 "department"까지 불러올 수 있는 특성이 있다.
     	
     	//Employee 타입 
     	System.out.println(manager.getName() + " " + manager.getSalary());
